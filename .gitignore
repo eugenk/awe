@@ -3,3 +3,10 @@
 *.idx
 *.log
 *~
+*.ilg
+*.bbl
+*.blg
+*.nlo
+*.nls
+*.toc
+*.dvi
