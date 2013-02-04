@@ -1,8 +1,8 @@
 class Twelv
 	# Attribute, die der User bereits gezogen hat (öffentlich)
-	attr_reader :taken_numbers
+	attr_accessor :taken_numbers
 	# Die Zahlen, die am Anfang vorhanden sind und zum Ende weniger werden
-	attr :left_numbers
+	attr_accessor :left_numbers
 	
 	# Setze alle Zahlen
 	def initialize()
@@ -30,15 +30,17 @@ class Twelv
 			puts "Game has ended. You won \n"
 			puts "Initialize new game...\n"
 			initialize()
-			return
+			return nil
 		end
 		
 		if (@taken_numbers[-1] <=> @taken_numbers[-2]) == relation
  			puts "Right guess! \n"
+ 			return true
 		else	
 			puts "Game Over! \n"
 			puts "Initialize new game...\n"
 			initialize()
+			return false
 		end
 	end
 	
@@ -49,12 +51,12 @@ class Twelv
 	
 	# Nächste Zahl ist höher
 	def guess_higher() 
-		guess(1)
+		return guess(1)
 	end
 	
 	# Nächste Zahl ist tiefer
 	def guess_lower()
-		guess(-1)
+		return guess(-1)
 	end
 	
 	private :take_number
