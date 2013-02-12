@@ -15,13 +15,11 @@ class Roman
   def int_to_roman(num)
     raise NonPositiveNumberError, "Argument not positive: #{num}" unless num > 0
     r = ''
-    @sym_val_map.each do |sv|
-      s = sv[0]
-      v = sv[1]
-      (num / v).times do
-        r << s
+    @sym_val_map.each do |roman, decimal|
+      (num / decimal).times do
+        r << roman
       end
-      num = num % v
+      num = num % decimal
     end
     r
   end
@@ -38,14 +36,13 @@ class Roman
       return 0
     end
 
-    @sym_val_map.each do |sv|
-      s = sv[0]
-      v = sv[1]
-      pos = r.index(s)
-      if pos && pos == 0
-        return v + roman_to_int_worker(r[pos+1..-1])
-      elsif pos && pos > 0
-        return v - roman_to_int_worker(r[0..pos-1]) + roman_to_int_worker(r[pos+1..-1])
+    @sym_val_map.each do |roman, decimal|
+      pos = r.index(roman)
+      next if pos == nil
+      if pos == 0
+        return decimal + roman_to_int_worker(r[pos+1..-1])
+      elsif pos > 0
+        return decimal - roman_to_int_worker(r[0..pos-1]) + roman_to_int_worker(r[pos+1..-1])
       end
     end
     0
