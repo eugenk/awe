@@ -1,0 +1,2 @@
+class BadSymbolOrderError < ArgumentError
+end

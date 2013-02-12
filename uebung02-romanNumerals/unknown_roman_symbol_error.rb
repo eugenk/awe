@@ -1,0 +1,2 @@
+class UnknownRomanSymbolError < ArgumentError
+end
