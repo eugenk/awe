@@ -1,7 +1,7 @@
 require_relative 'unknown_roman_symbol_error.rb'
 require_relative 'bad_symbol_order_error.rb'
 require_relative 'non_positive_number_error.rb'
-class Roman
+class RomanDecimalConverter
   def initialize
     @basic_symbols =%w"M D C L X V I"
     @basic_values =[1000, 500, 100, 50, 10, 5, 1]

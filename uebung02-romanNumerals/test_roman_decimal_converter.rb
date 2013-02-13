@@ -1,7 +1,7 @@
-require_relative 'roman.rb'
+require_relative 'roman_decimal_converter.rb'
 require 'test/unit'
 
-class Test_Roman < Test::Unit::TestCase
+class Test_RomanDecimalConverter < Test::Unit::TestCase
   def setup
     @symbols = 'IVXLCDM'
     @sym_val_map = @symbols.split('').zip([1,5,10,50,100,500,1000])
@@ -22,7 +22,7 @@ class Test_Roman < Test::Unit::TestCase
             ['MIX',1009],
             ['MCDXCIX',1499]
         ]
-    @r = Roman.new
+    @r = RomanDecimalConverter.new
   end
 
   def test_roman_to_int_basic
