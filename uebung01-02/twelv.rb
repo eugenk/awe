@@ -19,6 +19,7 @@ class Twelv
     end
     @taken_numbers << @left_numbers.delete(@left_numbers.sample)
     puts to_s
+    
     @taken_numbers[-1]
   end
   
