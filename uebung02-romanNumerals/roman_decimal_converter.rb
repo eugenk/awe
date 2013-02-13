@@ -13,7 +13,7 @@ class RomanDecimalConverter
   end
 
   def int_to_roman(num)
-    raise NonPositiveNumberError, "Argument not positive: #{num}" unless num > 0
+    raise NonPositiveNumberError, "Argument not positive: #{num}"  unless num > 0
     result = ''
     @sym_val_map.each do |roman, decimal|
       (num / decimal).times do
@@ -21,13 +21,15 @@ class RomanDecimalConverter
       end
       num %= decimal
     end
+    
     result
   end
 
   def roman_to_int(roman_num)
     roman_num = roman_num.upcase
-    raise UnknownRomanSymbolError, "Unknown roman symbol in: #{roman_num}" if contains_unknown_symbol?(roman_num)
-    raise BadSymbolOrderError, "Bad symbol order in: #{roman_num}" if has_bad_symbol_order?(roman_num)
+    raise UnknownRomanSymbolError, "Unknown roman symbol in: #{roman_num}"  if contains_unknown_symbol?(roman_num)
+    raise BadSymbolOrderError, "Bad symbol order in: #{roman_num}"  if has_bad_symbol_order?(roman_num)
+    
     roman_to_int_worker(roman_num)
   end
 
@@ -45,6 +47,7 @@ class RomanDecimalConverter
         return decimal - roman_to_int_worker(roman_num[0..pos-1]) + roman_to_int_worker(roman_num[pos+1..-1])
       end
     end
+    
     0
   end
 
@@ -58,6 +61,7 @@ class RomanDecimalConverter
         return true
       end
     end
+    
     false
   end
 
