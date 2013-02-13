@@ -19,7 +19,7 @@ class RomanDecimalConverter
       (num / decimal).times do
         r << roman
       end
-      num = num % decimal
+      num %= decimal
     end
     r
   end
